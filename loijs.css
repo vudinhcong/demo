@@ -1,0 +1,23 @@
+
+@media (min-width: 800px){
+    body{
+        margin: 0;
+         padding: 0;
+        background:url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRjGLxoN_i9zw80cTVrdiHxWXQmaucoLEECSw&usqp=CAU);
+        background-size: cover;
+    }
+}       
+@media (max-width: 799px){
+     body{
+        background:url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRMbGj_bIvfLbAGc4Ug29DcvcqVTcNjGXxZmQ&usqp=CAU);
+        margin:0;
+        padding:0;
+        background-size: cover;
+    }
+}
+.container{
+    color: white;
+}
+.error{
+     color: red;
+}

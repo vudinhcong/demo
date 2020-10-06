@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="loijs.css"> 
+    <title>Document</title>
+    <script type="text/javascript">
+        document.addEventListener('DOMContenLoaded', function(){
+            document.querySelector('#form').onclick = myFunction;
+        });
+        function myFunction(){
+            //check họ tên
+            var fullname = document.querySelector('#fullname').value;
+            if(fullname==""){
+                document.querySelector('#errorname').innerHTML=`!vui lòng nhập đẩy đủ họ tên`;
+            }else{
+                document.querySelector('#errorname').innerHTML=``;
+            }
+            //check username
+            var username = document.querySelector('#username').value;
+            if(username.length>10){
+                document.querySelector('#erroruser').innerHTML=`!Tên đăng nhập không hợp lệ(nhập không quá 10 ký tự)`;
+            }
+            else{
+                document.querySelector('#erroruser').innerHTML=``;
+            }
+            //check password
+            var password = document.querySelector('#password').value;
+            var check =/(?=.*[a-z])(?=.*[A-Z])(?=.*\d){6,16}/;
+            if(check.test(password)){
+                document.querySelector('#errorpass').innerHTML=``;
+            }else{
+                document.querySelector('#errorpass').innerHTML=`!Mời bn nhập mật khẩu từ 6-16 ký tự (phải có ít nhất 1 chữ hoa, 1 chữ thường và số)`;
+            }
+            //chekc retype-passwword
+            var retypepassword = document.querySelector('#retype-password').value;  
+            if(retypepassword != password){
+                document.querySelector('#errorretype').innerHTML=`!Vui lòng nhập giống mật khẩu ở trến`;             
+            }else{
+                document.querySelector('#errorretype').innerHTML=``;
+            }
+            //check email
+            var email = document.querySelector('#email').value;
+            var check_email = email.indexOf("@");
+            if(check_email < 1){
+                document.querySelector('#erroremail').innerHTML=`!email không hợp lệ`;
+                return false;
+            }else{
+                document.querySelector('#erroremail').innerHTML=``;
+            }
+            //check phone
+            var phone = document.querySelector('#phone').value;
+            if(isNaN(phone)){
+                document.querySelector('#errorphone').innerHTML=`!Số điện thoại không được(vui lòng nhập số không chữ)`;
+            }else{
+                document.querySelector('#errorphone').innerHTML=``;
+            }
+            //check answer
+            var answer = document.querySelector('#answer').value;
+            if(answer == ""){
+                document.querySelector('#erroranswer').innerHTML=`!Vui lòng nhập câu trả lời`;
+            }else{
+                document.querySelector('#erroranswer').innerHTML=``;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <form id="form">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <h2>Form đăng ký</h2>
+                                <label>Họ tên(*)</label>
+                                <input type="text" id="fullname" class="form-control" required placeholder="Nhập full name">
+                                <div id="errorname" class="error"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Tên đăng nhập (*)</label>
+                        <input type="text" id="username" class="form-control" required placeholder="Nhập username">
+                        <div id="erroruser" class="error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Password (*)</label>
+                        <input type="password" id="password" class="form-control" required  placeholder="Nhập password">
+                        <div id="errorpass" class="error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Nhập lại password (*)</label>
+                        <input type="password" id="retype-password" class="form-control" required placeholder="Nhập lại password">
+                        <div id="errorretype" class="error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Quốc tịch *</label>
+                        <select class="form-control">
+                            <option selected>vietnamese</option>
+                            <option>Thailand</option>
+                            <option>Brazil</option>
+                            <option>Canada</option>
+                            <option>China</option>
+                            <option>Singapore</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Email (*)</label>
+                        <input type="text" id="email" class="form-control" required placeholder="Nhập emalil">
+                        <div id="erroremail" class="error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Số điện thoại (*)</label>
+                        <input type="text" id="phone" class="form-control" required placeholder="Nhập số phone">
+                        <div id="errorphone" class="error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Câu hỏi bí mật *</label>
+                        <select class="form-control">
+                            <option selected>Cấp 1 bạn học trường gì?</option>
+                            <option>Cấp 2 bạn học trường gì?</option>
+                            <option>Cấp 3 bạn học trường gì?</option>
+                            <option>Bạn thích ăn món gì nhất?</option>
+                            <option>Bạn thích đi đâu nhất?</option>
+                            <option>Bạn thích tâm sự với ai?</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Trả lời (*)</label>
+                        <input type="text" id="answer" class="form-control" required placeholder="Nhập answer">
+                        <div id="erroranswer" class="error"></div>
+                    </div>
+                    <div class="form-group">
+                        <button onclick = "myFunction(); return false;">Kiểm tra</button>
+                        <button>Đăng ký</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
